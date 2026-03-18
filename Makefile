@@ -14,7 +14,7 @@ env-down:
 env-cleanup:
 	@read -p "Clean all environment volume files? [y/N]: " ans; \
 	if [ "$$ans" = "y" ]; then \
-		docker compose down agilewebapp-postgres && \
+		docker compose down agilewebapp-postgres port-forwarder && \
 		rm -rf out/pgdata && \
 		echo "Environment files cleaned up"; \
 	else \
@@ -53,3 +53,8 @@ migrate-action:
 		-path /migrations \
 		-database postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@agilewebapp-postgres:5432/${POSTGRES_DB}?sslmode=disable \
 		"$(action)"
+
+agilewebapp-run:
+	@export LOGGER_FOLDER=${PROJECT_ROOT}/out/logs && \
+	export POSTGRES_HOST=localhost && \
+	go run cmd/agilewebapp/main.go

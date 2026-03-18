@@ -4,9 +4,7 @@ CREATE TABLE agilewebapp.users (
 	id	  SERIAL                PRIMARY KEY,
 	version   INTEGER      NOT NULL DEFAULT 1,
 	full_name VARCHAR(100) NOT NULL CHECK (char_length(full_name) BETWEEN 3 AND 100),
-	email     VARCHAR(50)  NOT NULL CHECK (
-		email ~ '^[a-zA-Z0-9._%+-]+@[a-zA-Z]{2,}$/'
-	)
+	email     VARCHAR(50)  NOT NULL 
 );
 
 CREATE TABLE agilewebapp.tasks (
