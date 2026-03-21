@@ -20,7 +20,7 @@ func (r *UsersRepository) GetUser(
 	query := `
 	SELECT id, version, full_name, email
 	FROM agilewebapp.users
-	WHERE id = $1
+	WHERE id = $1;
 	`
 
 	row := r.pool.QueryRow(ctx, query, id)
