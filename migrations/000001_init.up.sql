@@ -10,12 +10,9 @@ CREATE TABLE agilewebapp.users (
 CREATE TABLE agilewebapp.tasks (
 	id	       SERIAL                PRIMARY KEY,
 	version        INTEGER      NOT NULL DEFAULT 1,
-	option         VARCHAR(50)  NOT NULL,
 	title 	       VARCHAR(100) NOT NULL,
 	description    VARCHAR(1000),
 	completed      BOOLEAN      NOT NULL,
-	sprint	       VARCHAR(50),
-	deadline       TIMESTAMPTZ,
 	created_at     TIMESTAMPTZ  NOT NULL,
 	completed_at   TIMESTAMPTZ,
 
@@ -26,5 +23,4 @@ CREATE TABLE agilewebapp.tasks (
 	),
 
 	author_user_id INTEGER      NOT NULL REFERENCES agilewebapp.users(id),
-	worker_user_id INTEGER               REFERENCES agilewebapp.users(id)
 );
